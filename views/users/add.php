@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tambah Pengguna Baru</h1>
         <a href="<?php echo ROOT_URL; ?>/users" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-2"></i> Kembali
@@ -150,8 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Alert message -->
     <?php showAlert(); ?>
     
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row g-3">
+        <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-person-plus me-2"></i> Form Tambah Pengguna</h5>
@@ -315,8 +315,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
         
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4">
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-3">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-image me-2"></i> Preview Foto</h5>
                 </div>

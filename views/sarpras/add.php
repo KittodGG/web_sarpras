@@ -276,17 +276,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <img id="imagePreview" src="<?php echo ROOT_URL; ?>/assets/img/no-image.png" alt="Preview" class="img-fluid img-thumbnail" style="max-height: 300px;">
                 </div>
             </div>
-            
-            <div class="card shadow-sm mt-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i> Informasi</h5>
-                </div>
-                <div class="card-body">
-                    <p><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i> Field dengan tanda <span class="text-danger">*</span> wajib diisi.</p>
-                    <p><i class="bi bi-exclamation-circle-fill text-info me-2"></i> Pastikan informasi yang diinput sudah benar sebelum menyimpan data.</p>
-                    <p><i class="bi bi-card-image text-success me-2"></i> Upload foto untuk mempermudah identifikasi sarpras.</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>

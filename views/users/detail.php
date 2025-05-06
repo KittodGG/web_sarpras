@@ -169,52 +169,7 @@ $peminjaman = $peminjamanModel->getPeminjamanByUser($id, $offset, $limit);
                 </div>
             </div>
             
-            <!-- User Statistics -->
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-bar-chart me-2"></i> Statistik Peminjaman
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="card bg-light">
-                                <div class="card-body py-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-0">Peminjaman Aktif</h6>
-                                            <small class="text-muted">Status: Dipinjam</small>
-                                        </div>
-                                        <h3 class="mb-0 text-primary">
-                                            <?php 
-                                            $active = 0;
-                                            foreach($peminjaman as $pinjam) {
-                                                if ($pinjam['status'] == 'Dipinjam') $active++;
-                                            }
-                                            echo $active;
-                                            ?>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="card bg-light">
-                                <div class="card-body py-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-0">Total Peminjaman</h6>
-                                            <small class="text-muted">Semua waktu</small>
-                                        </div>
-                                        <h3 class="mb-0 text-primary"><?php echo count($peminjaman); ?></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tambah Kategori Baru</h1>
         <a href="<?php echo ROOT_URL; ?>/kategori" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-2"></i> Kembali
@@ -58,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Alert message -->
     <?php showAlert(); ?>
     
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row g-3">
+        <div class="col-lg-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i> Form Tambah Kategori</h5>
@@ -103,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
         
-        <div class="col-md-4">
-            <div class="card shadow-sm">
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-3">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i> Informasi</h5>
                 </div>
@@ -112,27 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i> Field dengan tanda <span class="text-danger">*</span> wajib diisi.</p>
                     <p><i class="bi bi-exclamation-circle-fill text-info me-2"></i> Kategori digunakan untuk mengelompokkan sarpras agar lebih mudah dalam pengelolaan dan pencarian.</p>
                     <p><i class="bi bi-lightbulb-fill text-success me-2"></i> Buat nama kategori yang jelas dan deskriptif untuk memudahkan identifikasi jenis sarpras.</p>
-                    <p><i class="bi bi-box-seam text-primary me-2"></i> Setelah membuat kategori, Anda dapat mulai menambahkan sarpras dengan kategori tersebut.</p>
                 </div>
             </div>
             
-            <div class="card shadow-sm mt-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-tags me-2"></i> Kategori Populer</h5>
-                </div>
-                <div class="card-body">
-                    <p>Beberapa contoh kategori yang sering digunakan:</p>
-                    <ul>
-                        <li>Elektronik</li>
-                        <li>Furniture</li>
-                        <li>Alat Laboratorium</li>
-                        <li>Peralatan Olahraga</li>
-                        <li>Alat Peraga</li>
-                        <li>Peralatan Musik</li>
-                        <li>Perlengkapan Kelas</li>
-                    </ul>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

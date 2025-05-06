@@ -2,7 +2,7 @@
 <div class="sidebar">
     <div class="sidebar-header">
         <h5 class="sidebar-title">Menu Navigasi</h5>
-        <button class="sidebar-toggle" type="button">
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar width">
             <i class="bi bi-arrow-left-right"></i>
         </button>
     </div>

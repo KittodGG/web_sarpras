@@ -39,7 +39,7 @@
                 <span>Sarpras SMKN 1 Cimahi</span>
             </a>
             
-            <button class="navbar-toggler mobile-menu-toggle" type="button">
+            <button class="navbar-toggler mobile-menu-toggle" type="button" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -52,7 +52,7 @@
                             <?php else: ?>
                                 <img src="<?php echo ROOT_URL; ?>/assets/img/user.png" alt="Profile" class="rounded-circle me-2" width="32" height="32">
                             <?php endif; ?>
-                            <span><?php echo $_SESSION['username']; ?></span>
+                            <span><?php echo $_SESSION['nama_lengkap']; ?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>/profile"><i class="bi bi-person me-2"></i> Profil</a></li>

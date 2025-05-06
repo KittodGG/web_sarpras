@@ -372,60 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
             
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i> Informasi</h5>
-                </div>
-                <div class="card-body">
-                    <p><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i> Field dengan tanda <span class="text-danger">*</span> wajib diisi.</p>
-                    <p><i class="bi bi-exclamation-circle-fill text-info me-2"></i> Username harus unik dan tidak boleh sama dengan pengguna lain.</p>
-                    <p><i class="bi bi-shield-lock-fill text-success me-2"></i> Biarkan field password kosong jika tidak ingin mengubah password.</p>
-                    <p><i class="bi bi-person-badge text-primary me-2"></i> Perubahan role akan mempengaruhi hak akses pengguna.</p>
-                </div>
-            </div>
             
-            <!-- Riwayat Peminjaman -->
-            <div class="card shadow-sm mt-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i> Riwayat Peminjaman</h5>
-                </div>
-                <div class="card-body">
-                    <?php
-                    // Dapatkan data peminjaman untuk user ini
-                    $query = "SELECT COUNT(*) as total, 
-                             SUM(CASE WHEN status = 'Menunggu' THEN 1 ELSE 0 END) as menunggu,
-                             SUM(CASE WHEN status IN ('Dipinjam', 'Terlambat') THEN 1 ELSE 0 END) as aktif
-                             FROM peminjaman WHERE user_id = {$id}";
-                    $result = mysqli_query($conn, $query);
-                    $peminjaman = mysqli_fetch_assoc($result);
-                    ?>
-                    
-                    <div class="d-flex justify-content-between mb-2">
-                        <div>Total Peminjaman:</div>
-                        <div><strong><?php echo $peminjaman['total']; ?></strong></div>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <div>Menunggu Persetujuan:</div>
-                        <div><strong><?php echo $peminjaman['menunggu']; ?></strong></div>
-                    </div>
-                    <div class="d-flex justify-content-between mb-3">
-                        <div>Peminjaman Aktif:</div>
-                        <div><strong><?php echo $peminjaman['aktif']; ?></strong></div>
-                    </div>
-                    
-                    <?php if ($peminjaman['total'] > 0): ?>
-                    <div class="mt-3">
-                        <a href="<?php echo ROOT_URL; ?>/laporan/peminjaman?user_id=<?php echo $id; ?>" class="btn btn-info text-white w-100">
-                            <i class="bi bi-list-ul me-2"></i> Lihat Semua Peminjaman
-                        </a>
-                    </div>
-                    <?php else: ?>
-                    <div class="alert alert-info mb-0">
-                        <i class="bi bi-info-circle-fill me-2"></i> Pengguna ini belum pernah melakukan peminjaman.
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </div>
         </div>
     </div>
 </div>

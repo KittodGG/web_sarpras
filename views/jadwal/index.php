@@ -64,7 +64,7 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
 ?>
 
 <div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Jadwal Peminjaman</h1>
         <a href="<?php echo ROOT_URL; ?>/peminjaman/add" class="btn btn-primary">
             <i class="bi bi-plus-circle me-2"></i> Tambah Peminjaman
@@ -100,8 +100,8 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
     </div>
     
     <!-- Calendar -->
-    <div class="row g-4">
-        <div class="col-md-9">
+    <div class="row g-3">
+        <div class="col-lg-9">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-calendar-event me-2"></i> Kalender Peminjaman</h5>
@@ -112,19 +112,19 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
             </div>
         </div>
         
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <!-- Jadwal Hari Ini -->
-            <div class="card shadow-sm mb-4">
+            <div class="card shadow-sm mb-3">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0"><i class="bi bi-calendar-check me-2"></i> Jadwal Hari Ini</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-0">
                     <?php if (count($jadwalToday) > 0): ?>
                     <div class="list-group">
                         <?php foreach ($jadwalToday as $item): ?>
                         <a href="<?php echo ROOT_URL; ?>/peminjaman/detail/<?php echo $item['id']; ?>" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1"><?php echo $item['nama_sarpras']; ?></h6>
+                                <h6 class="mb-1 text-truncate" style="max-width: 150px;"><?php echo $item['nama_sarpras']; ?></h6>
                                 <small>
                                     <span class="badge rounded-pill 
                                         <?php 
@@ -136,7 +136,7 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
                                     </span>
                                 </small>
                             </div>
-                            <p class="mb-1"><?php echo $item['nama_peminjam']; ?></p>
+                            <p class="mb-1 text-truncate" style="max-width: 200px;"><?php echo $item['nama_peminjam']; ?></p>
                             <small class="text-muted">
                                 <i class="bi bi-clock me-1"></i> <?php echo date('H:i', strtotime($item['tanggal_pinjam'])); ?> - <?php echo date('H:i', strtotime($item['tanggal_kembali'])); ?>
                             </small>
@@ -153,29 +153,7 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
             </div>
             
             <!-- Legenda -->
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i> Keterangan</h5>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-2">
-                        <div style="width: 20px; height: 20px; background-color: #3498db; border-radius: 4px; margin-right: 10px;"></div>
-                        <div>Disetujui</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div style="width: 20px; height: 20px; background-color: #4E382B; border-radius: 4px; margin-right: 10px;"></div>
-                        <div>Dipinjam</div>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div style="width: 20px; height: 20px; background-color: #e74c3c; border-radius: 4px; margin-right: 10px;"></div>
-                        <div>Terlambat</div>
-                    </div>
-                    
-                    <div class="alert alert-info mt-3">
-                        <i class="bi bi-info-circle-fill me-1"></i> Klik pada jadwal untuk melihat detail peminjaman.
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -237,14 +215,14 @@ $jadwalToday = $jadwalModel->getJadwalHariIni();
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize calendar
+    // Initialize calendar with responsive settings
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
+        initialView: window.innerWidth < 768 ? 'listMonth' : 'dayGridMonth',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            right: 'dayGridMonth,timeGridWeek,listMonth'
         },
         locale: 'id',
         events: <?php echo $eventsJson; ?>,
@@ -313,6 +291,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('sarpras_id').addEventListener('change', function() {
         this.form.submit();
     });
+    
+    // Handle window resize to change calendar view
+    window.addEventListener('resize', function() {
+        var view = window.innerWidth < 768 ? 'listMonth' : 'dayGridMonth';
+        calendar.changeView(view);
+    });
 });
 </script>
 
@@ -322,6 +306,9 @@ document.addEventListener('DOMContentLoaded', function() {
     cursor: pointer;
     border: none;
     padding: 2px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fc-day-today {
@@ -333,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .fc-toolbar-title {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
 }
 
 /* Responsive adjustments */
@@ -344,7 +331,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     .fc-toolbar-title {
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
+    }
+    
+    .fc-button {
+        padding: 0.2rem 0.5rem !important;
+        font-size: 0.8rem !important;
     }
 }
 </style>

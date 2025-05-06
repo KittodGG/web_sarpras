@@ -136,40 +136,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             
             <!-- Sarpras terkait -->
-            <div class="card shadow-sm mt-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0"><i class="bi bi-link-45deg me-2"></i> Sarpras Terkait</h5>
-                </div>
-                <div class="card-body">
-                    <?php
-                    // Dapatkan data sarpras yang terkait dengan kategori ini
-                    $query = "SELECT COUNT(*) as total FROM sarpras WHERE kategori_id = {$id}";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_assoc($result);
-                    $total_sarpras = $row['total'];
-                    ?>
-                    
-                    <?php if ($total_sarpras > 0): ?>
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle-fill me-2"></i> Kategori ini memiliki <strong><?php echo $total_sarpras; ?></strong> sarpras terkait.
-                    </div>
-                    <div class="mt-3">
-                        <a href="<?php echo ROOT_URL; ?>/sarpras?kategori=<?php echo $id; ?>" class="btn btn-info text-white w-100">
-                            <i class="bi bi-box-seam me-2"></i> Lihat Sarpras Terkait
-                        </a>
-                    </div>
-                    <?php else: ?>
-                    <div class="alert alert-warning">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i> Kategori ini belum memiliki sarpras.
-                    </div>
-                    <div class="mt-3">
-                        <a href="<?php echo ROOT_URL; ?>/sarpras/add" class="btn btn-primary w-100">
-                            <i class="bi bi-plus-circle me-2"></i> Tambah Sarpras Baru
-                        </a>
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </div>
         </div>
     </div>
 </div>

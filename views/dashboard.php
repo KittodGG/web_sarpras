@@ -86,7 +86,7 @@ $statusData = mysqli_fetch_assoc($statusStats);
         </div>
         
         <div class="col-md-3">
-            <div class="card shadow-sm h-100"></div></div>
+            <div class="card shadow-sm h-100">
                 <div class="card-body p-0">
                     <div class="stat-card">
                         <div class="stat-icon" style="background-color: var(--color-secondary);">
@@ -239,46 +239,7 @@ $statusData = mysqli_fetch_assoc($statusStats);
             </div>
             
             <!-- Masalah Terbaru -->
-            <div class="card shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="m-0 font-weight-bold">Masalah Terbaru</h5>
-                    <a href="<?php echo ROOT_URL; ?>/masalah" class="btn btn-sm btn-primary">
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <?php if (mysqli_num_rows($latestIssues) > 0): ?>
-                            <?php while ($issue = mysqli_fetch_assoc($latestIssues)): ?>
-                                <a href="<?php echo ROOT_URL; ?>/masalah/detail/<?php echo $issue['id']; ?>" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1"><?php echo $issue['nama_sarpras']; ?></h6>
-                                            <small class="text-muted">Peminjam: <?php echo $issue['nama_peminjam']; ?></small>
-                                        </div>
-                                        <span class="badge rounded-pill 
-                                            <?php 
-                                                if ($issue['status'] == 'Dilaporkan') echo 'bg-warning';
-                                                else if ($issue['status'] == 'Diproses') echo 'bg-info';
-                                                else if ($issue['status'] == 'Selesai') echo 'bg-success';
-                                            ?>">
-                                            <?php echo $issue['status']; ?>
-                                        </span>
-                                    </div>
-                                    <small class="text-muted">
-                                        <i class="bi bi-calendar3"></i> <?php echo formatDate($issue['created_at']); ?>
-                                    </small>
-                                </a>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <div class="text-center py-3">
-                                <div class="mb-2"><i class="bi bi-check-circle text-muted" style="font-size: 2rem;"></i></div>
-                                <p class="mb-0 text-muted">Tidak ada masalah yang dilaporkan</p>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

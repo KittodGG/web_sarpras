@@ -184,6 +184,7 @@ switch ($controller) {
 
 echo '</div>';
 
+
 // Load view footer
 include('views/includes/footer.php');
 ?>
