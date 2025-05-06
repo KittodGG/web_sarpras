@@ -1,0 +1,27 @@
+# Aktifkan rewrite engine
+RewriteEngine On
+
+# Atur base directory jika berada di subfolder
+# RewriteBase /ta_sarpras_web/
+
+# Kecualikan direktori dan file yang ada
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rute semua request ke index.php
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# Pengaturan keamanan
+<Files ~ "^\.ht">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Menonaktifkan tampilan directory
+Options -Indexes
+
+# PHP settings - commented out to test if they're causing the issue
+# php_value upload_max_filesize 10M
+# php_value post_max_size 10M
+# php_value max_execution_time 300
+# php_value max_input_time 300
